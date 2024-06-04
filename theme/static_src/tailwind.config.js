@@ -55,7 +55,7 @@ module.exports = {
                 
             },
             fontFamily: {
-                Inter: 'Inter'
+                inter: 'inter'
             }
         },
     },

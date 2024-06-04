@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'Inter';
-    src: url(/tasks/static/fonts/Inter/Inter.ttf);
+    font-family: 'inter';
+    src: url(/tasks/static/fonts/Inter/inter.ttf);
 }
