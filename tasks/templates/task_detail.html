@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="">
+    <div class="bg-neutral-100 shadow-lg rounded-lg py-5 px-8 min-h-48 flex flex-col justify-between max-w-[550px] m-auto">
+        <a href="{% url 'tasks' %}" class="text-gray-600 font-semibold gap-1 hover:text-dark hover:font-bold flex">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+            </svg>
+            Regresar
+        </a>
+        {% if task.important == True %}
+        <div class="mt-4">
+            <span class="bg-red-200 px-5 py-2 text-xs rounded-md font-semibold">Alta</span>
+        </div>
+        {% else %}
+        <div class="mt-4">
+            <span class="bg-secondary-light px-5 py-2 text-xs rounded-md font-semibold">Baja</span>
+        </div>
+        {% endif %}
+        <div class="flex justify-between items-center my-3">
+            <h1 class="text-lg font-bold text-dark">{{task.title}}</h1>
+            {% if task.datecompleted == Null %}
+            <a class="p-1 rounded-md hover:bg-neutral-200 transition-all" href="{% url 'task_complete' task.id %}">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                </svg>
+            </a>
+            {% endif %}
+        </div>
+        <hr class="mb-2">
+        <div class="mb-3 min-h-[200px]">
+            <p class="text-gray-700">{{task.description}}</p>
+        </div>
+        <hr class="mb-2">
+        <div class="text-gray-500 flex flex-col gap-2">
+            <div>
+                <p class="text-sm">Creado:</p>
+                <p class="text-sm">{{task.created}}</p>
+            </div>
+            <div>
+                {% if task.datecompleted == None %}
+                <p class="text-sm ">
+                    <span class="text-red-400 text-xs flex items-center justify-start gap-1"><svg
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+                            <path fill-rule="evenodd"
+                                d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
+                                clip-rule="evenodd" />
+                        </svg>
+                        Esta tarea aún no ha sido completada
+                </p>
+                {% else %}
+                <p class="text-sm">Completado:</p>
+                <p class="text-sm">{{task.datecompleted}}</p>
+                {% endif %}
+            </div>
+        </div>
+        <div class="my-4 flex justify-between">
+            <div>
+                <p
+                    class="text-gray-500 inline-flex border border-gray-400 px-4 rounded-md h-6 justify-center items-center text-sm">
+                    {{task.user.username}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

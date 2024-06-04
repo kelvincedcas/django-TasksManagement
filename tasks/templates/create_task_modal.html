@@ -1,0 +1,38 @@
+<section id="modal_task" class="hidden fixed top-0 left-0 bottom-0 right-0 bg-black bg-opacity-70 transition-all duration-1000 p-6">
+    <div class="bg-white m-auto opacity-100 rounded-xl p-8 flex flex-col gap-2">
+        <div class="flex flex-col">
+            <button id="button_back" class="text-gray-600 font-semibold gap-1 hover:text-dark hover:font-bold flex">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3" />
+                </svg>     
+                Regresar
+            </button>
+            <h1 class="text-center font-bold text-lg text-dark">Crear nueva tarea</h1>
+            <hr class="my-2">
+        </div>
+        <form class="flex flex-col gap-4" action="{% url 'tasks' %}" method="POST">
+            {% csrf_token %}
+            <div>
+                <input class="bg-neutral-100 focus:ring-0 focus:border-primary w-full py-3 px-5 text-base rounded-md border-gray-100 focus:outline-0" type="text" name="title" maxlength="200" placeholder="Escribe el nombre de la tarea" required id="id_title">
+            </div>
+            <div class="flex flex-col gap-4">
+                <textarea class="bg-neutral-100 max-h-64 focus:ring-0 focus:border-primary w-full py-3 px-5 rounded-md border-gray-100" name="description" cols="40" rows="10" id="id_description" placeholder="Escribe una descripción de la tarea"></textarea>
+            </div>
+            <div>
+                <label for="id_important">Importante</label>
+                <input class="checked:bg-primary rounded-sm focus:outline-none focus:ring-0 focus:border-none ml-2" type="checkbox" name="important" id="id_important">
+            </div>
+            {% if error %}
+                <span class="text-red-400 text-xs flex items-center justify-start gap-1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5">
+                    <path fill-rule="evenodd" d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" clip-rule="evenodd" />
+                </svg>
+                {{error}}</span>
+            {% endif %}
+            <div class="flex flex-col gap-3">
+                <button class="bg-primary text-white flex items-center justify-center rounded-md font-medium h-12 w-full hover:bg-primary-hover">
+                    Crear tarea
+                </button>
+            </div>
+        </form>
+    </div>
+</section>

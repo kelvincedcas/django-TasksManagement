@@ -1,0 +1,36 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador de tareas</title>
+    {% tailwind_css %}
+</head>
+<body class="sm:font-Inter h-screen">
+    {% load static %}
+    <main class="flex min-h-screen w-screen flex-col sm:supports-[min-height:100dvh]:min-h-[100dvh] md:grid md:grid-cols-2 lg:grid-cols-[60%_40%]">
+        <section class="hidden flex-1 flex-col justify-center px-5 pt-8 md:flex md:px-6 md:py-[22px] lg:px-8 items-center bg-neutral-100">
+            <img class="w-96" src="{% static 'img/task.svg' %}" alt="imagen-task">
+            <div class="max-w-96 text-center">
+                <p class="mt-5 font-medium text-dark text-2xl">¡Hola, bienvenido al mejor lugar para <span class="font-black text-primary-hover">llevar control de tus tareas!</span ></p>
+            </div>
+        </section>
+        <aside class="px-9 py-5 min-h-screen flex flex-col justify-between min-w-96">
+            <div></div>
+            <div class="flex w-full flex-col items-center justify-center">
+                <h1 class="font-bold text-xl">Vamos a empezar</h1>
+                <div class="block w-full mt-3 max-w-[440px] lg:flex lg:flex-row lg:justify-center lg:gap-3">
+                    <a class="bg-primary text-white flex items-center justify-center rounded-md font-medium h-12 w-full hover:bg-primary-hover" href="{% url 'signin' %}">Iniciar sesión</a>
+                    <a class="bg-secondary text-white flex items-center justify-center rounded-md font-medium mt-3 h-12 lg:mt-0 w-full hover:bg-secondary-hover" href="{% url 'signup' %}">Registrarse</a>
+                </div>
+            </div>
+            <div class="text-center">
+                <hr class="m-auto mb-4 max-w-md">
+                <p class="text-sm font-semibold text-dark">Desarrollado y diseñado por:</p>
+                <span class="text-sm font-normal text-primary">Kelvin Cedeño</span>
+            </div>
+        </aside>
+    </main>
+</body>
+</html>

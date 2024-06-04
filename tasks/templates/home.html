@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <h1 class="text-xl font-bold text-dark">Aquí tienes un resumen de tus tareas</h1>
+    <hr class="my-5">
+
+    {% if total_task %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 text-dark">
+        <div class="bg-neutral-50  shadow-lg p-5 flex justify-between items-center rounded-xl min-h-36 gap-5">
+            <h1 class="max-w-36 font-bold">Tareas totales</h1>
+            <span class="inline-flex h-14 w-14 bg-dark text-white justify-center items-center rounded-md text-3xl font-bold shadow-sm">{{total_task_all}}</span>
+        </div>
+        <div class="bg-neutral-50 shadow-lg p-5 flex justify-between items-center rounded-xl min-h-36 gap-5">
+            <h1 class="max-w-36 text-dark font-bold">Tareas pendientes</h1>
+            <span class="inline-flex h-14 w-14 bg-secondary-hover text-white justify-center items-center text-3xl rounded-md font-bold shadow-sm">{{total_task}}</span>
+        </div>
+        <div class="bg-neutral-50  shadow-lg p-5 flex justify-between items-center rounded-xl min-h-36">
+            <h1 class="max-w-36 font-bold text-dark">Tareas pendientes importantes</h1>
+            <span class="inline-flex h-14 w-14 bg-rose-500 text-white justify-center items-center rounded-md text-3xl font-bold shadow-sm">{{total_tasks_important}}</span>
+        </div>
+        <div class="bg-neutral-50  shadow-lg p-5 flex justify-between items-center rounded-xl min-h-36">
+            <h1 class="font-bold">Tareas completadas</h1>
+            <span class="inline-flex h-14 w-14 bg-primary-hover text-white justify-center items-center rounded-md text-3xl font-bold shadow-sm">{{completed_tasks}}</span>
+        </div>
+    </div>
+    {% else %}
+        {% include 'no_results_tasks.html' %}
+    {% endif %}
+        
+    <h1 class="mt-7 text-xl font-bold text-dark">Aquí tienes un resumen de tu calendario</h1>
+    <hr class="my-5">
+
+    {% if total_task %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-2 gap-5 text-dark">
+        <div class="bg-neutral-50 shadow-lg p-5 flex justify-between items-center rounded-xl min-h-36 gap-5">
+            <h1 class="max-w-36 font-bold">Actividades totales</h1>
+            <span class="inline-flex h-14 w-14 bg-dark text-white justify-center items-center rounded-md text-3xl font-bold shadow-sm">{{total_task_all}}</span>
+        </div>
+        <div class="bg-neutral-50  shadow-lg p-5 flex justify-between items-center rounded-xl min-h-36 gap-5">
+            <h1 class="max-w-36 text-dark font-bold">Actividades pendientes</h1>
+            <span class="inline-flex h-14 w-14 bg-secondary-hover text-white justify-center items-center text-3xl rounded-md font-bold shadow-sm">{{total_task}}</span>
+        </div>
+        <div class="bg-neutral-50  shadow-lg p-5 flex justify-between items-center rounded-xl min-h-36">
+            <h1 class="max-w-36 font-bold text-dark">Actividades pendientes importantes</h1>
+            <span class="inline-flex h-14 w-14 bg-rose-500 text-white justify-center items-center rounded-md text-3xl font-bold shadow-sm">{{total_tasks_important}}</span>
+        </div>
+        <div class="bg-neutral-50  shadow-lg p-5 flex justify-between items-center rounded-xl min-h-36">
+            <h1 class="font-bold">Actividades completadas</h1>
+            <span class="inline-flex h-14 w-14 bg-primary-hover text-white justify-center items-center rounded-md text-3xl font-bold shadow-sm">{{completed_tasks}}</span>
+        </div>
+    </div>
+    {% else %}
+    {% include 'no_results_calendar.html' %}
+    {% endif %}
+    
+</div>
+{% endblock content %}

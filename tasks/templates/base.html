@@ -1,0 +1,101 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <title>Django App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% tailwind_css %}
+</head>
+{% load static %}
+<body class="sm:font-Inter h-screen">
+    <main class="flex">
+        <aside id="sidebar" class="hidden sm:flex fixed bg-neutral-100 h-screen min-w-60 shadow-lg px-3 transition-all duration-500">
+            <nav class="w-full text-dark py-20 sm:py-8 h-screen flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between">
+                        <p class="text-lg font-semibold text-dark">Task <span class="text-xl font-black text-primary-hover">Management</span></p>
+                        <button id="close_sidebar" class="p-1 rounded-md hover:bg-neutral-200 transition-all">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m18.75 4.5-7.5 7.5 7.5 7.5m-6-15L5.25 12l7.5 7.5" />
+                            </svg>
+                        </button>
+                    </div>
+                    <hr class="m-5">
+                    <ul class="flex flex-col gap-2">
+                        <li class= "hover:font-semibold transition-all">
+                            <button onclick="open_modal()" class="bg-primary w-full text-white p-2 flex items-center justify-center rounded-md font-medium  hover:bg-primary-hover transition-all">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                                </svg>
+                                Crear tarea
+                            </button>
+                        </li>
+                        <li class= "rounded-lg hover:bg-neutral-200 hover:text-dark hover:font-semibold transition-all">
+                            <a class="w-full flex items-center gap-2 p-2" href="{% url 'home' %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                            </svg>Inicio</a>
+                        </li>
+                        <li class= "rounded-lg hover:bg-neutral-200 hover:text-dark hover:font-semibold transition-all">
+                            <a class="w-full flex justify-between gap-2 px-2 py-2" href="{% url 'tasks' %}">
+                                <div class="flex flex-row items-center gap-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
+            
+                                    </svg>Tareas
+                                </div> 
+                                {% include 'tasks_notifications.html' %}
+                            </a>
+                        </li>
+                        <li class= "rounded-lg hover:bg-neutral-200 hover:text-dark hover:font-semibold transition-all">
+                            <a class="w-full flex items-center gap-2 px-2 py-2" href="{% url 'module_building' %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5m-9-6h.008v.008H12v-.008ZM12 15h.008v.008H12V15Zm0 2.25h.008v.008H12v-.008ZM9.75 15h.008v.008H9.75V15Zm0 2.25h.008v.008H9.75v-.008ZM7.5 15h.008v.008H7.5V15Zm0 2.25h.008v.008H7.5v-.008Zm6.75-4.5h.008v.008h-.008v-.008Zm0 2.25h.008v.008h-.008V15Zm0 2.25h.008v.008h-.008v-.008Zm2.25-4.5h.008v.008H16.5v-.008Zm0 2.25h.008v.008H16.5V15Z" />
+                            </svg>Calendario</a>
+                        </li>
+                    </ul>
+                </div>
+                <ul class="text-sm flex flex-col gap-2">
+                    <hr>
+                    {% if user.is_authenticated %}
+                    <li class= "rounded-lg hover:bg-neutral-200 hover:text-dark hover:font-semibold transition-all">      
+                        <div class="flex">
+                            <a class="w-full flex items-center gap-2 px-2 py-2" href="{% url 'module_building' %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
+                                </svg>{{user.username}}</a>
+                        </div>
+                    </li> 
+                    <li class= "rounded-lg hover:bg-neutral-200 hover:text-dark hover:font-semibold transition-all">
+                        <a class="w-full flex items-center gap-2 px-2 py-2" href="{% url 'logout' %}">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15M12 9l-3 3m0 0 3 3m-3-3h12.75" />
+                            </svg>Cerrar sesión</a>
+                    </li> 
+                    {% endif %}
+                </ul>
+            </nav>
+        </aside>
+        <section id="main" class="p-8 min-h-screen w-screen sm:ml-60 transition-all duration-500">
+            <div>
+                <button id="open_sidebar" class="bg-gray-100 shadow-md fixed sm:hidden p-1 rounded-md hover:bg-neutral-200 transition-all">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
+                    </svg>                      
+                </button>
+            </div>
+            <div id="div_separador" class="mb-12 sm:mb-12">
+
+            </div>
+            {% block content %}
+                
+            {% endblock content %}
+        </section>
+    </main>
+    {% include 'create_task_modal.html' %}
+    {% load static %}
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>

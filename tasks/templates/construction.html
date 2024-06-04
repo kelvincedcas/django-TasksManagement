@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% load static %}
+<div class="m-auto max-w-lg min-h-full -mt-10 flex flex-col justify-center items-center gap-5">
+    <img class="max-h-96" src="{% static 'img/building.svg' %}" alt="">
+    <p class="max-w-[450px] text-center text-2xl text-dark font-medium">Estamos construyendo algo fantástico para ti. <span class="font-black text-3xl text-primary">¡Espéralo pronto!</span></p>
+</div>
+{% endblock content %}
+    
