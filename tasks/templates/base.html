@@ -11,10 +11,13 @@
 {% load static %}
 <body class="sm:font-Inter h-screen">
     <main class="flex">
-        <aside id="sidebar" class="hidden sm:flex fixed bg-neutral-100 h-screen min-w-60 shadow-lg px-3 py-[100px] sm:py-8 transition-all duration-500">
-            <nav class="w-full text-dark h-screen flex flex-col justify-between">
+        <div>
+            Esto es una prueba
+        </div>
+        <aside id="sidebar" class="hidden sm:flex fixed bg-neutral-100 h-screen min-w-60 shadow-lg px-3 transition-all duration-500">
+            <nav class="w-full text-dark py-10 h-screen flex flex-col justify-between">
                 <div>
-                    <div class="flex justify-between mt-20 sm:mt-8">
+                    <div class="flex justify-between">
                         <p class="text-lg font-semibold text-dark">Task <span class="text-xl font-black text-primary-hover">Management</span></p>
                         <button id="close_sidebar" class="p-1 rounded-md hover:bg-neutral-200 transition-all">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
@@ -57,7 +60,7 @@
                         </li>
                     </ul>
                 </div>
-                <ul class="text-sm flex flex-col gap-2 mb-20 sm:mb-8">
+                <ul class="text-sm flex flex-col gap-2">
                     <hr>
                     {% if user.is_authenticated %}
                     <li class= "rounded-lg hover:bg-neutral-200 hover:text-dark hover:font-semibold transition-all">      
